@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component  {
+
+  state = {
+    value: ""
+  }
+
+  handleChange = (event) => {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit = (event) => {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
+
+
+  render(){
+
+    return (    
+      <div className="App">   
+        <form className="form" onSubmit={(e) => this.handleSubmit(e)}>
+          <input className="textField" type="text" name="name" placeholder="Name" value={this.state.value} onChange={(e) => this.handleChange(e)}/>
+          <input className="submit" type="submit" value="Submit" />
+        </form>
+      </div>
+    );
+  } 
 }
+
 
 export default App;
