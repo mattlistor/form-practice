@@ -5,27 +5,34 @@ import './App.css';
 class App extends React.Component  {
 
   state = {
-    value: ""
+    score: "",
+    name: ""
   }
 
   handleChange = (event) => {
-    this.setState({value: event.target.value});
+    this.setState({[event.target.name]: event.target.value});
   }
 
   handleSubmit = (event) => {
-    if(this.state.value !== ""){
-      alert('A name was submitted: ' + this.state.value);
+    if(this.state.name !== ""){
+      alert(this.state.name + ' ' + this.state.score);
     }
     event.preventDefault();
+    this.addUser(event, this.state)
   }
 
+  addUser = (e, user) => {
+    console.log(e, user)
+  }
 
   render(){
 
     return (    
       <div className="App">   
         <form className="form" onSubmit={(e) => this.handleSubmit(e)}>
-          <input className="textField" type="text" name="name" placeholder="Name..." value={this.state.value} onChange={(e) => this.handleChange(e)}/>
+          <input className="textField" type="text" name="name" placeholder="Name..." value={this.state.name} onChange={(e) => this.handleChange(e)}/>
+          <input className="textField" type="number" name="score" placeholder="Score..." value={this.state.score} onChange={(e) => this.handleChange(e)}/>
+          <br></br>
           <input className="submit" type="submit" value="Submit" />
         </form>
       </div>
