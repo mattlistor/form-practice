@@ -13,7 +13,9 @@ class App extends React.Component  {
   }
 
   handleSubmit = (event) => {
-    alert('A name was submitted: ' + this.state.value);
+    if(this.state.value !== ""){
+      alert('A name was submitted: ' + this.state.value);
+    }
     event.preventDefault();
   }
 
@@ -23,7 +25,7 @@ class App extends React.Component  {
     return (    
       <div className="App">   
         <form className="form" onSubmit={(e) => this.handleSubmit(e)}>
-          <input className="textField" type="text" name="name" placeholder="Name" value={this.state.value} onChange={(e) => this.handleChange(e)}/>
+          <input className="textField" type="text" name="name" placeholder="Name..." value={this.state.value} onChange={(e) => this.handleChange(e)}/>
           <input className="submit" type="submit" value="Submit" />
         </form>
       </div>
