@@ -7,24 +7,34 @@ body {
   color:#FFFFFF;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .App {
-  min-height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 50px;
   user-select: none; 
 }
 
+.List {
+  background-color:rgb(21, 21, 21);
+  width:98%;
+  height:60vh;
+  color:rgb(123, 123, 123);
+  overflow-y: auto;
+  font-size: 30px;
+}
+
 form {
+  margin-top: 10vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  /* flex-wrap: wrap */
 }
 input{
   font-family: 'Courier New', sans-serif;
@@ -51,7 +61,7 @@ input.textField::placeholder {
 input.submit {
   color: rgb(251,192,0);
   background-color: rgb(26, 26, 26);
-  font-size: 30px;
+  font-size: 20px;
   padding: 10px;
   border: none;
   outline: none;
