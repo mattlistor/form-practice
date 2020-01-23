@@ -10,8 +10,6 @@ class App extends React.Component  {
     list: [{name: "Matthew", score: "1234"}]
   }
 
-  // {name: "Name", score: "Score"}
-
   handleChange = (event) => {
     if (event.target.name === "score"){
       if (event.target.value.toString().length <= 4){
@@ -32,15 +30,14 @@ class App extends React.Component  {
       this.setState({
         score: "",
         name: "",
-        list: [...this.state.list, newUser]
+        list: [...this.state.list, newUser].sort((a, b) => {return b.score-a.score})
       });
-    }
-    
-  }
+    }    
+  } 
 
   render(){
+    
     return (  
-
       <div className="App">  
         <form className="form" onSubmit={(e) => this.handleSubmit(e, this.state)}>
           <div className="header">High Score List</div> 
@@ -55,6 +52,5 @@ class App extends React.Component  {
     );
   } 
 }
-
 
 export default App;
