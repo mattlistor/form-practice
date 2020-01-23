@@ -10,52 +10,87 @@ body {
   align-items: flex-start;
 }
 
+.header{
+  /* margin-top: 10vh; */
+  font-size: 27px;
+  margin-bottom: 20px;
+  color: #8bc34a;
+}
+
 .App {
-  /* height: 100vh; */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   user-select: none; 
+  margin-top: 40px;
+
 }
 
 .List {
   background-color:rgb(21, 21, 21);
-  width:98%;
-  height:60vh;
-  color:rgb(123, 123, 123);
+  height: 70vh;
+  color:rgb(201, 201, 201);
   overflow-y: auto;
   font-size: 30px;
+  padding: 30px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  border: solid 1px rgb(201, 201, 201);
+  /* width: 300px; */
+}
+
+.listItem, .listHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* align-items: flex-start; */
+}
+
+.listHeader{
+  color: rgb(251,192,0);
+  margin-bottom: 7px;
+}
+
+.name, .score{
+  width:130px;
+  text-align: left;
+  font-size: 20px;
+  /* background-color: red; */
+}
+
+.score{
+  width:100px;
 }
 
 form {
-  margin-top: 10vh;
+  /* margin-top: 10vh; */
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  /* flex-wrap: wrap */
+  align-items: flex-start;
+  margin-right: 40px;
 }
 input{
   font-family: 'Courier New', sans-serif;
-  margin: 10px;
+  margin: 10px 0px 10px 0px;
 }
 
-input.textField {
+input.textField, input.scoreField {
   background-color: rgb(26, 26, 26);
   color: rgb(251,192,0);
-  font-size: 30px;
-  padding: 10px;
+  font-size: 20px;
+  padding: 5px;
   padding-left: 0;
   border: none;
   outline: none;
-  border-bottom: solid 1px white;
-  caret-color:white;
+  border-bottom: solid 1px rgb(201, 201, 201);
+  caret-color:rgb(201, 201, 201);
 }
 
-input.textField::placeholder {
+input::placeholder {
   color: rgb(0,179,204);
-  /* font-size: 20px */
 }
 
 input.submit {
@@ -65,8 +100,8 @@ input.submit {
   padding: 10px;
   border: none;
   outline: none;
-  border: solid 1px white;
-  width: 50%;
+  border: solid 1px rgb(201, 201, 201);
+  width: 65%;
 }
 
 input.submit:hover {
@@ -82,6 +117,3 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
 }
-
-
-
