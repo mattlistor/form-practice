@@ -28,8 +28,10 @@ class App extends React.Component  {
     if(this.state.name !== "" && this.state.score !== ""){
       const newUser = {score: parseInt(this.state.score), name: this.state.name}
       this.setState({
-        score: "",
-        name: "",
+        // Clears these feilds
+        // score: "",
+        // name: "",
+        // Adds to the list and sorts it by score descending
         list: [...this.state.list, newUser].sort((a, b) => {return b.score-a.score})
       });
     }    
