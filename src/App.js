@@ -7,7 +7,7 @@ class App extends React.Component  {
   state = {
     score: "",
     name: "",
-    list: [{name: "Matthew", score: "1234"}]
+    list: []
   }
 
   handleChange = (event) => {
@@ -27,15 +27,34 @@ class App extends React.Component  {
 
     if(this.state.name !== "" && this.state.score !== ""){
       const newUser = {score: parseInt(this.state.score), name: this.state.name}
-      this.setState({
-        // Clears these feilds
-        // score: "",
-        // name: "",
-        // Adds to the list and sorts it by score descending
-        list: [...this.state.list, newUser].sort((a, b) => {return b.score-a.score})
+      fetch('http://localhost:3000/users', {
+        method: "POST",
+        headers:{
+          "Content-Type": "application/json",
+          accepts: "application/json"
+        },
+        body: JSON.stringify({user: newUser})
+      })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          // Clears these feilds
+          score: "",
+          name: "",
+          // Adds to the list and sorts it by score descending
+          list: [...this.state.list, newUser].sort((a, b) => {return b.score-a.score})
+        });
       });
-    }    
+    }  
   } 
+
+  componentDidMount = () => {
+    fetch('http://localhost:3000/users')
+    .then(res => res.json())
+    .then((myJson) => {
+      this.setState({ list: myJson.sort((a, b) => {return b.score-a.score}) });
+    })
+  }
 
   render(){
     
@@ -43,8 +62,8 @@ class App extends React.Component  {
       <div className="App">  
         <form className="form" onSubmit={(e) => this.handleSubmit(e, this.state)}>
           <div className="header">High Score List</div> 
-          <input className="textField" id="inputField" type="text" name="name" placeholder="Name..." value={this.state.name} onChange={(e) => this.handleChange(e)}/>
-          <input className="scoreField" id="inputField" type="number" name="score" maxLength="4" placeholder="Score..." value={this.state.score} onChange={(e) => this.handleChange(e)}/>
+          <input className="textField" type="text" name="name" placeholder="Name..." value={this.state.name} onChange={(e) => this.handleChange(e)}/>
+          <input className="scoreField" type="number" name="score" maxLength="4" placeholder="Score..." value={this.state.score} onChange={(e) => this.handleChange(e)}/>
           <br></br>
           <input className="submit" type="submit" value="Submit" />
         </form>
